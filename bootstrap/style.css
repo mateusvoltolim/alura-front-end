@@ -10,3 +10,29 @@
     margin-bottom: 0;
     font-size: 24px;
 }
+
+.group-select,
+.group-radio {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.group-radio .radio:first-child {
+    margin-top: 0;
+}
+
+.group-select {
+    float: right;
+}
+
+footer {
+    background-color: #333333;
+    color: #FFFFFF;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+footer address:last-child {
+    margin-bottom: 0;
+}

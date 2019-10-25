@@ -177,9 +177,38 @@
                         aria-describedby="inputGroupSuccess2Status" placeholder="Seu e-mail">
                 </div>
             </div>
+
+            <div class="group-radio">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="tipo-pessoa" checked />Pessoa Física
+                    </label>
+                    <label>
+                        <input type="radio" name="tipo-pessoa" />Pessoa Jurídica
+                    </label>
+                </div>
+            </div><select class="form-control group-select" name="tipo-solicitacao">
+                <option value="" disabled selected>Tipo de solicitação</option>
+                <option value="casa">Casa</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="mansao">Mansão</option>
+            </select>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+
         </form>
     </section>
 
+    <footer>
+        <address>
+            <strong>TopCasaFina Arquitetura</strong><br />
+            Rua Vergueiro, 3185, Vila Mariana<br />
+            São Paulo, SP<br />
+            Tel: (11) 5571-2751 ou 5083-3884
+        </address>
+        <address>
+            Email: contato.topcasafina@alura.com.br
+        </address>
+    </footer>
     <script src="jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
