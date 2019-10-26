@@ -1,0 +1,88 @@
+#paineis-sobre {
+    margin-top: 20px;
+}
+
+.titulo-depoimentos {
+    background-color: #0275D8;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 24px;
+}
+
+.group-select,
+.group-radio {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.top-casa-fina-banner {
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+}
+
+header {
+    background-image: url(../img/castelo.jpg);
+    background-size: cover;
+    background-position: top center;
+    height: 100%;
+    position: relative;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.group-radio .radio:first-child {
+    margin-top: 0;
+}
+
+.group-select {
+    float: right;
+}
+
+footer {
+    background-color: #333333;
+    color: #FFFFFF;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+footer address:last-child {
+    margin-bottom: 0;
+}
+
+@media(min-width: 768px) {
+    #paineis-sobre {
+        margin-top: 0;
+    }
+}
+
+@media(min-width: 992px) {
+    .top-casa-fina-banner {
+        left: 0;
+        transform: translate(0, -80%);
+        width: 50%;
+    }
+    .top-casa-fina-banner-wrapper {
+        position: relative;
+        height: 100%;
+    }
+}
