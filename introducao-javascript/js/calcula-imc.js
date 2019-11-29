@@ -1,11 +1,11 @@
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aparecida Nutricionista";
 
-var pacientes = document.querySelectorAll(".paciente");
+var tabela = document.querySelectorAll(".paciente");
 
-for (var i = 0; i < pacientes.length; i++) {
+for (var i = 0; i < tabela.length; i++) {
 
-    var paciente = pacientes[i];
+    var paciente = tabela[i];
 
     var tdPeso = paciente.querySelector(".info-peso");
     var peso = tdPeso.textContent;
