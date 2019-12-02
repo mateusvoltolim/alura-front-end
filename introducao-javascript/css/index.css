@@ -91,7 +91,7 @@ label{
 }
 
 .grupo{
-	width: 32%;
+	width: 33%;
 	display: inline-block;
 	padding: 10px 0px;
 }
@@ -144,4 +144,13 @@ button[disabled=disabled], button:disabled {
 .fade-out {
 	opacity: 0;
 	transition: 0.5s;
+}
+
+#filtro-nome-paciente.campo {
+	width: 30%;
+	margin-bottom: 10px;
+}
+
+.invisible {
+	display: none;
 }
