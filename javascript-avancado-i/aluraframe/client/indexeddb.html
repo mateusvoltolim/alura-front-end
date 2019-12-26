@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Indexed DB</title>
+</head>
+
+<body>
+    <script src="js/app/models/Negociacao.js"></script>
+    <script>
+        var connection;
+        var request = window.indexedDB.open('aluraframe', 3);
+
+        request.onupgradeneeded = event => {
+            console.log('Criando/alterando banco existente');
+            
+            var conn = event.target.result;
+            if (conn.objectStoreNames.contains('negociacoes')) {
+                conn.deleteObjectStore('negociacoes');
+            }
+            conn.createObjectStore('negociacoes', {autoIncrement: true});
+        };
+
+        request.onsuccess = event => {
+            console.log('Conexão obtida com sucesso');
+            connection = event.target.result;
+        };
+
+        request.onerror = event => console.log(event.target.error);
+
+        function adicionar() {
+            let transaction = connection.transaction(['negociacoes'], 'readwrite');
+            let store = transaction.objectStore('negociacoes');
+            let negociacao = new Negociacao(new Date(), 1, 200);
+            let request = store.add(negociacao);
+
+            request.onsuccess = event => {
+                console.log('Negociação incluída com sucesso');
+            }
+
+            request.onerror = event => {
+                console.log('Não foi possivel adicionar a negociação');
+            }
+        };
+
+    </script>
+</body>
+
+</html>
