@@ -29,8 +29,7 @@
         <button class="btn btn-primary" type="submit" onclick="sendPost(event)">Enviar dados para servidor</button>
     </form>
 
-    <script src="js/app/models/Negociacao.js"></script>
-    <script src="js/app/helpers/DateHelper.js"></script>
+    <script src="js/app/services/HttpService.js"></script>
     <script>
 
         function sendPost(event) {
@@ -38,31 +37,21 @@
             event.preventDefault();
             console.log("Enviando post");
 
-            //aqui você deve ler os dados do formulário
-            //construir o json
-            //enviar o XMLHttpRequest
-            let xhr = new XMLHttpRequest();
-            xhr.open('POST', '/negociacoes', true);
-            xhr.setRequestHeader('Content-type', 'application/json');
             let $ = document.querySelector.bind(document);
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        $('#data')          = '';
-                        $('#quantidade')    = 1;
-                        $('#valor')         = 0.0;
-                    } else {
-                        console.log(xhr.responseText);
-                    }
-                }
-            }
-
-            xhr.send(JSON.stringify({
-                data:       $('#data').value,
-                quantidade: $('#quantidade').value,
-                valor:      $('#valor').value
-            }));
+            new HttpService().post('/negociacoes',
+                {
+                    data: $('#data').value,
+                    quantidade: $('#quantidade').value,
+                    valor: $('#valor').value
+                })
+                .then(() => {
+                    $('#data').value = '';
+                    $('#quantidade') = 1;
+                    $('#valor') = 0.0;
+                    $('#data').focus();
+                })
+                .catch(error => alert(`Não foi possível envitar a negociação: ${error}`));
         }
     </script>
 </body>
