@@ -8,18 +8,19 @@
 
 <body>
     <script src="js/app/models/Negociacao.js"></script>
+    <script src="js/app/services/ConnectionFactory.js"></script>
     <script>
         var connection;
         var request = window.indexedDB.open('aluraframe', 3);
 
         request.onupgradeneeded = event => {
             console.log('Criando/alterando banco existente');
-            
-            var conn = event.target.result;
+
+            let conn = event.target.result;
             if (conn.objectStoreNames.contains('negociacoes')) {
                 conn.deleteObjectStore('negociacoes');
             }
-            conn.createObjectStore('negociacoes', {autoIncrement: true});
+            conn.createObjectStore('negociacoes', { autoIncrement: true });
         };
 
         request.onsuccess = event => {
@@ -43,6 +44,28 @@
                 console.log('Não foi possivel adicionar a negociação');
             }
         };
+
+        function listarAll() {
+            let transaction = connection.transaction(['negociacoes'], 'readwrite');
+            let store = transaction.objectStore('negociacoes');
+            let cursor = store.openCursor();
+
+            let negociacoes = [];
+            cursor.onsuccess = event => {
+                let pNegociacao = event.target.result;
+                if (pNegociacao) {
+                    let negociacaoJson = pNegociacao.value;
+                    negociacoes.push(new Negociacao(negociacaoJson._data, negociacaoJson._quantidade, negociacaoJson._valor));
+                    pNegociacao.continue();
+                } else {
+                    console.log(negociacoes);
+                }
+            }
+
+            cursor.onerror = event => {
+                console.log(e.target.error.name);
+            }
+        }
 
     </script>
 </body>
