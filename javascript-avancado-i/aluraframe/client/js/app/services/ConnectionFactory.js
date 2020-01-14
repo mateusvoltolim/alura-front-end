@@ -16,7 +16,7 @@ var ConnectionFactory = (function () {
                 let openRequest = window.indexedDB.open(dbName, version);
                 openRequest.onupgradeneeded = event => {
                     ConnectionFactory._createStores(event.target.result);
-                };
+                };  
 
                 openRequest.onsuccess = event => {
                     if (!connection) {
