@@ -5,10 +5,10 @@ var ConnectionFactory = (function () {
     var connection = null;
     var close = null;
 
-    class ConnectionFactory {
+   return class ConnectionFactory {
 
         constructor() {
-            throw new Error("Não é possível criar instâncias de ConnectionFactory");
+            throw new Error('Não é possível criar instâncias de ConnectionFactory');
         }
 
         static getConnection() {
@@ -23,7 +23,7 @@ var ConnectionFactory = (function () {
                         connection = event.target.result;
                         close = connection.close.bind(connection);
                         connection.close = function () {
-                            throw new Error("Você não pode fechar diretamente a conexão");
+                            throw new Error('Você não pode fechar diretamente a conexão');
                         }
                     }
                     resolve(event.target.result);
